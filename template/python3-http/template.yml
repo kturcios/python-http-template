@@ -1,4 +1,4 @@
-language: python2.7-http
+language: python3-http
 fprocess: flask run
 build_options:
   - name: dev

@@ -9,7 +9,7 @@ This template is a work in progress and makes use of the incubator project [of-w
 
 ## Downloading the Template
 ```
-$ faas template pull URL_HERE
+$ faas template pull https://github.com/kturcios/python-http-template
 $ faas new --lang python2.7-http
 ```
 
@@ -23,10 +23,8 @@ The function handler is passed two arguments, *event* and *context*.
 - query
 - path
 
-*context* contains basic information about the host, including:
+*context* contains basic information about the function, including:
 - hostname
-- host
-- user_agent
 
 ## Response Bodies
 By default, flask will automatically attempt to set the correct Content-Type header for you based on the type of response. For example, returning a dict object type will automatically attach the header `Content-Type: application/json` and returning a string type will automatically attach the `Content-Type: text/html, charset=utf-8` for you.
@@ -81,7 +79,7 @@ Accessing request body
 ```python
 def handle(event, context):
     return {
-        "response": "You said: " + event.body,
+        "response": "You said: " + str(event.body),
         "status_code": 200
     }
 ```
